@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4134498270214272420}
   - component: {fileID: 4390586135511978628}
   - component: {fileID: 5668965436982727139}
+  - component: {fileID: 117989086469473781}
+  - component: {fileID: 8602101289116732479}
   m_Layer: 0
   m_Name: Enemy_Base
   m_TagString: Untagged
@@ -114,3 +116,31 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &117989086469473781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186570998331223520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eede4b517e56cdb42ad96dfd60561244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleStats
+  health: 100
+  moveSpeed: 5
+--- !u!114 &8602101289116732479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186570998331223520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f6379ce8f8e654fbe3d76226678599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 100
+  currentHealth: 0
