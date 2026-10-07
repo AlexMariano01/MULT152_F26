@@ -3,26 +3,19 @@ using UnityEngine.InputSystem;
 
 public class FPCameraLook : MonoBehaviour
 {
+    [Header("Reference")]
     public Transform playerBody;
+    public InputActionReference lookAction;
+
+    [Header("Camera Setting")]
     public float lookSensitivity = 100f;
     public float minPitch = -80f;
     public float maxPitch = 80f;
-    float pitch;
-    Vector2 lookInput;
-
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    public void Onlook(InputAction.CallbackContext context)
-    {
-        lookInput = context.ReadValue<Vector2>();
-    }
+    private float pitch = 0f;
 
     void Update()
     {
+        Vector2 lookInput = lookAction.action.ReadValue<Vector2>();
         float mouseX = lookInput.x * lookSensitivity * Time.deltaTime;
         float mouseY = lookInput.y * lookSensitivity * Time.deltaTime;
         pitch -= mouseY;

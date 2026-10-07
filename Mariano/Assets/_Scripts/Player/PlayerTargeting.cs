@@ -1,25 +1,63 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class PlayerTargeting : MonoBehaviour
 {
     public InputActionReference cycleTargetAction;
+
+    public bool IsLockedOn {get; private set;}
+
     private List<EnemyTarget> enemies = new List<EnemyTarget>();
+
     private int currentIndex = -1;
+
     private EnemyTarget previousTarget;
-    
+
+    Color gray73 = new Color(0.7294f, 0.7294f, 0.7294f, 1f);
+
     public EnemyTarget CurrentTarget
     {
         get
         {
-            if (currentIndex <0 || currentIndex >= enemies.Count)
+            if (currentIndex < 0 || currentIndex >= enemies.Count)
             {
                 return null;
             }
 
             return enemies[currentIndex];
+        }
+    }
+
+    public EnemyTarget LockedTarget
+    {
+        get
+        {
+            if (currentIndex < 0 || currentIndex >= enemies.Count)
+            {
+                return null;
+            }
+            
+            return enemies[currentIndex];
+        }
+    }
+
+    public void ToggleLock()
+    {
+        if (enemies.Count == 0)
+        {
+            return;
+        }
+        
+        IsLockedOn = !IsLockedOn;
+
+        if (IsLockedOn)
+        {
+            Debug.Log("Locked: " + LockedTarget.name);
+        }
+        else
+        {
+            Debug.Log("Lock Released");
         }
     }
 
@@ -36,7 +74,6 @@ public class PlayerTargeting : MonoBehaviour
         {
             Debug.Log("Tab Pressed");
         }
-
         if (cycleTargetAction.action.triggered)
         {
             Debug.Log("Cycle Target Action");
@@ -61,14 +98,14 @@ public class PlayerTargeting : MonoBehaviour
             return;
         }
 
-        //Reset Previous Color
+        //Rest Previous Color
         if (previousTarget != null)
         {
             Renderer oldR = previousTarget.GetComponent<Renderer>();
 
             if (oldR != null)
             {
-                oldR.material.SetColor("_BaseColor", Color.silver);
+                oldR.material.SetColor("_BaseColor", gray73);
             }
         }
 
