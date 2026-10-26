@@ -1145,18 +1145,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6528536892927759232, guid: d1b15bf8615206647ad04582a17b7ef2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6528536892927759232, guid: d1b15bf8615206647ad04582a17b7ef2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6528536892927759232, guid: d1b15bf8615206647ad04582a17b7ef2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
     - target: {fileID: 8758405406019000068, guid: d1b15bf8615206647ad04582a17b7ef2, type: 3}
       propertyPath: player
       value: 
