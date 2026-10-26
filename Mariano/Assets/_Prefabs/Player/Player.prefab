@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 3047341678727429369}
   - component: {fileID: 4843283818372790563}
   - component: {fileID: 978054756170016906}
+  - component: {fileID: 7775497799881237679}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -798,3 +799,17 @@ MonoBehaviour:
   targeting: {fileID: 4843283818372790563}
   lockOnAction: {fileID: 9167650321019339039, guid: 75fcce4a18363794eb2d4b77fc32af01, type: 3}
   currentMode: 1
+--- !u!114 &7775497799881237679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8860135006669588212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f6379ce8f8e654fbe3d76226678599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 100
+  currentHealth: 0
