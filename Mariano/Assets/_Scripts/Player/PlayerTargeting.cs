@@ -6,7 +6,7 @@ public class PlayerTargeting : MonoBehaviour
 {
     public InputActionReference cycleTargetAction;
 
-    public bool IsLockedOn {get; private set;}
+    public bool IsLockedOn { get; private set; }
 
     private List<EnemyTarget> enemies = new List<EnemyTarget>();
 
@@ -37,23 +37,23 @@ public class PlayerTargeting : MonoBehaviour
             {
                 return null;
             }
-            
+
             return enemies[currentIndex];
         }
     }
 
     public void ToggleLock()
     {
-        if (enemies.Count == 0)
+        if (CurrentTarget == null)
         {
             return;
         }
-        
+
         IsLockedOn = !IsLockedOn;
 
         if (IsLockedOn)
         {
-            Debug.Log("Locked: " + LockedTarget.name);
+           Debug.Log("Locked: " + LockedTarget.name); 
         }
         else
         {
@@ -92,7 +92,6 @@ public class PlayerTargeting : MonoBehaviour
 
     public void CycleTarget()
     {
-
         if (enemies.Count == 0)
         {
             return;
@@ -113,7 +112,8 @@ public class PlayerTargeting : MonoBehaviour
 
         if (currentIndex >= enemies.Count)
         {
-            currentIndex = 0;
+            ClearTarget();
+            return;
         }
 
         previousTarget = CurrentTarget;
@@ -126,5 +126,23 @@ public class PlayerTargeting : MonoBehaviour
         {
             r.material.SetColor("_BaseColor", Color.red);
         }
+    }
+
+    public void ClearTarget()
+    {
+        if (previousTarget != null)
+        {
+            Renderer oldR = previousTarget.GetComponent<Renderer>();
+
+            if (oldR != null)
+            {
+                oldR.material.SetColor("_BaseColor", gray73);
+            }
+        }
+
+        currentIndex = -1;
+        previousTarget = null;
+        IsLockedOn = false;
+        Debug.Log("Target Cleared");
     }
 }

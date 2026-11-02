@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class FloatingDamageText : MonoBehaviour
 {
@@ -11,12 +12,12 @@ public class FloatingDamageText : MonoBehaviour
 
     private void Awake()
     {
-        damageText = GetComponent<TextMeshProUGUI>();
+        damageText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void SetDamage(int damage)
     {
-        damageText.text = damageText.ToString();
+        damageText.text = damage.ToString();
     }
 
     void Update()
