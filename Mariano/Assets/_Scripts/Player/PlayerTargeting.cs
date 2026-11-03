@@ -100,12 +100,7 @@ public class PlayerTargeting : MonoBehaviour
         //Rest Previous Color
         if (previousTarget != null)
         {
-            Renderer oldR = previousTarget.GetComponent<Renderer>();
-
-            if (oldR != null)
-            {
-                oldR.material.SetColor("_BaseColor", gray73);
-            }
+            previousTarget.SetTargeted(false);
         }
 
         currentIndex++;
@@ -117,32 +112,21 @@ public class PlayerTargeting : MonoBehaviour
         }
 
         previousTarget = CurrentTarget;
-
         Debug.Log("Target Selected: " + CurrentTarget.name);
-
-        Renderer r = CurrentTarget.GetComponent<Renderer>();
-
-        if (r != null)
-        {
-            r.material.SetColor("_BaseColor", Color.red);
-        }
+        CurrentTarget.SetTargeted(true);
     }
 
     public void ClearTarget()
     {
         if (previousTarget != null)
         {
-            Renderer oldR = previousTarget.GetComponent<Renderer>();
-
-            if (oldR != null)
-            {
-                oldR.material.SetColor("_BaseColor", gray73);
-            }
+            previousTarget.SetTargeted(false);
         }
 
         currentIndex = -1;
         previousTarget = null;
         IsLockedOn = false;
+
         Debug.Log("Target Cleared");
     }
 }

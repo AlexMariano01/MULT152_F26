@@ -16,8 +16,7 @@ GameObject:
   - component: {fileID: 4763790566745038296}
   - component: {fileID: -8755533486820051891}
   - component: {fileID: -3916899518646021146}
-  - component: {fileID: 8758405406019000068}
-  - component: {fileID: 6847603878050645058}
+  - component: {fileID: 180761549394821379}
   m_Layer: 0
   m_Name: Enemy_Base
   m_TagString: Enemy
@@ -135,11 +134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956d517f0834d1d44944d6122774ec03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  healthSlider: {fileID: 6688316206849060179}
-  health: 50
   maxHealth: 50
+  health: 50
+  healthSlider: {fileID: 6688316206849060179}
   damageTextPrefab: {fileID: 6151205363584361490, guid: eecc5b07c81944049bf5876f54cb120f, type: 3}
   damageTextSpawnPoint: {fileID: 6735429343015650930}
+  deathEffect: {fileID: 0}
+  destroyDelay: 2
+  flashDuration: 0.1
 --- !u!114 &4763790566745038296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f57759f281300343b8aeb1148c64993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTarget
+  normalColor: {r: 0.7294, g: 0.7294, b: 0.7294, a: 1}
+  targetedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!195 &-8755533486820051891
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -190,9 +194,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5575732206037430071, guid: 4b269140ad902ce44901be6b45bba09f, type: 3}
   throwPoint: {fileID: 2909194383178728221}
   throwForce: 15
-  attackRange: 8
   attackCooldown: 2
---- !u!114 &8758405406019000068
+--- !u!114 &180761549394821379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,28 +204,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186570998331223520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d55617bd7a08c4087d7085b60e1757, type: 3}
+  m_Script: {fileID: 11500000, guid: feb0424396ef8734496073d93d05a763, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySearchPlayer
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   player: {fileID: 0}
-  moveSpeed: 3
+  agent: {fileID: -8755533486820051891}
+  enemyThrow: {fileID: -3916899518646021146}
+  enemyHealth: {fileID: 3403768158763272757}
+  useNavMesh: 0
+  moveSpeed: 3.5
+  rotationSpeed: 10
   detectionRange: 15
   attackRange: 8
---- !u!114 &6847603878050645058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186570998331223520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43c8d4686dcd90489a077b4566bcca9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
-  damage: 10
-  attackRange: 2
-  attackCooldown: 1
+  currentState: 0
 --- !u!1 &1843815670510479532
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,9 @@ public class Health : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    [Header("Damage")]
+    [SerializeField] private PlayerDamageEffects damageEffects;
+
 
     void Start()
     {
@@ -31,6 +34,7 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
 
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        damageEffects.ShowDamageFlash();
 
         UpdateHealthUI();
 
